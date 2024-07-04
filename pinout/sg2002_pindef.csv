@@ -1,0 +1,1045 @@
+Pin Num,Pin Name,IO Type,IOGroup,PowerDomain,IO_cfg_register,"Function_select
+_register","fmux_
+default",Description,Note
+6,SD0_CLK,18OD33 IO,G10,VDDIO_SD0_EMMC,"IOBLK_G10_REG_SD0_CLK
+0x0300_1A00","FMUX_GPIO_REG_IOCTRL_SD0_CLK
+0x0300_101C",0x0,"IO SD0_CLK function select : 
+
+    0 : SDIO0_CLK (default)
+
+    1 : IIC1_SDA 
+
+    2 : SPI0_SCK 
+
+    3 : XGPIOA[7] 
+
+    5 : PWM[15] 
+
+    6 : EPHY_LNK_LED 
+
+    7 : DBG[0] 
+
+    Others : Reserved",
+7,SD0_CMD,18OD33 IO,G10,VDDIO_SD0_EMMC,"IOBLK_G10_REG_SD0_CMD
+0x0300_1A04","FMUX_GPIO_REG_IOCTRL_SD0_CMD
+0x0300_1020",0x0,"IO SD0_CMD function select : 
+
+    0 : SDIO0_CMD (default)
+
+    1 : IIC1_SCL 
+
+    2 : SPI0_SDO 
+
+    3 : XGPIOA[8] 
+
+    5 : PWM[14] 
+
+    6 : EPHY_SPD_LED 
+
+    7 : DBG[1] 
+
+    Others : Reserved",
+8,SD0_D0,18OD33 IO,G10,VDDIO_SD0_EMMC,"IOBLK_G10_REG_SD0_D0
+0x0300_1A08","FMUX_GPIO_REG_IOCTRL_SD0_D0
+0x0300_1024",0x0,"IO SD0_D0 function select : 
+
+    0 : SDIO0_D[0] (default)
+
+    1 : CAM_MCLK1 
+
+    2 : SPI0_SDI 
+
+    3 : XGPIOA[9] 
+
+    4 : UART3_TX 
+
+    5 : PWM[13] 
+
+    6 : WG0_D0 
+
+    7 : DBG[2] 
+
+    Others : Reserved",
+10,SD0_D1,18OD33 IO,G10,VDDIO_SD0_EMMC,"IOBLK_G10_REG_SD0_D1
+0x0300_1A0C","FMUX_GPIO_REG_IOCTRL_SD0_D1
+0x0300_1028",0x0,"IO SD0_D1 function select : 
+
+    0 : SDIO0_D[1] (default)
+
+    1 : IIC1_SDA 
+
+    2 : AUX0 
+
+    3 : XGPIOA[10] 
+
+    4 : UART1_TX 
+
+    5 : PWM[12] 
+
+    6 : WG0_D1 
+
+    7 : DBG[3] 
+
+    Others : Reserved",
+11,SD0_D2,18OD33 IO,G10,VDDIO_SD0_EMMC,"IOBLK_G10_REG_SD0_D2
+0x0300_1A10","FMUX_GPIO_REG_IOCTRL_SD0_D2
+0x0300_102C",0x0,"IO SD0_D2 function select : 
+
+    0 : SDIO0_D[2] (default)
+
+    1 : IIC1_SCL 
+
+    2 : AUX1 
+
+    3 : XGPIOA[11] 
+
+    4 : UART1_RX 
+
+    5 : PWM[11] 
+
+    6 : WG1_D0 
+
+    7 : DBG[4] 
+
+    Others : Reserved",
+12,SD0_D3,18OD33 IO,G10,VDDIO_SD0_EMMC,"IOBLK_G10_REG_SD0_D3
+0x0300_1A14","FMUX_GPIO_REG_IOCTRL_SD0_D3
+0x0300_1030",0x0,"IO SD0_D3 function select : 
+
+    0 : SDIO0_D[3] (default)
+
+    1 : CAM_MCLK0 
+
+    2 : SPI0_CS_X 
+
+    3 : XGPIOA[12] 
+
+    4 : UART3_RX 
+
+    5 : PWM[10] 
+
+    6 : WG1_D1 
+
+    7 : DBG[5] 
+
+    Others : Reserved",
+14,SD0_CD,18OD33 IO,G7,VDDIO_SD0_EMMC,"IOBLK_G7_REG_SD0_CD
+0x0300_1900","FMUX_GPIO_REG_IOCTRL_SD0_CD
+0x0300_1034",0x0,"IO SD0_CD function select : 
+
+    0 : SDIO0_CD (default)
+
+    3 : XGPIOA[13] 
+
+    Others : Reserved",
+15,SD0_PWR_EN,18OD33 IO,G7,VDDIO_SD0_EMMC,"IOBLK_G7_REG_SD0_PWR_EN
+0x0300_1904","FMUX_GPIO_REG_IOCTRL_SD0_PWR_EN
+0x0300_1038",0x3,"IO SD0_PWR_EN function select : 
+
+    0 : SDIO0_PWR_EN 
+
+    3 : XGPIOA[14] (default)
+
+    Others : Reserved",
+17,SPK_EN,18OD33 IO,G7,VDDIO_SD0_EMMC,"IOBLK_G7_REG_SPK_EN
+0x0300_1908","FMUX_GPIO_REG_IOCTRL_SPK_EN
+0x0300_103C",0x3,"IO SPK_EN function select : 
+
+    3 : XGPIOA[15] (default)
+
+    Others : Reserved",
+18,UART0_TX,18OD33 IO,G7,VDDIO_SD0_EMMC,"IOBLK_G7_REG_UART0_TX
+0x0300_190C","FMUX_GPIO_REG_IOCTRL_UART0_TX
+0x0300_1040",0x0,"IO UART0_TX function select : 
+
+    0 : UART0_TX (default)
+
+    1 : CAM_MCLK1 
+
+    2 : PWM[4] 
+
+    3 : XGPIOA[16] 
+
+    4 : UART1_TX 
+
+    5 : AUX1 
+
+    7 : DBG[6] 
+
+    Others : Reserved",
+19,UART0_RX,18OD33 IO,G7,VDDIO_SD0_EMMC,"IOBLK_G7_REG_UART0_RX
+0x0300_1910","FMUX_GPIO_REG_IOCTRL_UART0_RX
+0x0300_1044",0x0,"IO UART0_RX function select : 
+
+    0 : UART0_RX (default)
+
+    1 : CAM_MCLK0 
+
+    2 : PWM[5] 
+
+    3 : XGPIOA[17] 
+
+    4 : UART1_RX 
+
+    5 : AUX0 
+
+    7 : DBG[7] 
+
+    Others : Reserved",
+20,EMMC_DAT2,18OD33 IO,G7,VDDIO_SD0_EMMC,"IOBLK_G7_REG_EMMC_DAT2
+0x0300_1918","FMUX_GPIO_REG_IOCTRL_EMMC_DAT2
+0x0300_104C",0x1,"IO EMMC_DAT2 function select : 
+
+    0 : EMMC_DAT[2] 
+
+    1 : SPINOR_HOLD_X (default)
+
+    2 : SPINAND_HOLD 
+
+    3 : XGPIOA[26] 
+
+    Others : Reserved",
+21,EMMC_CLK,18OD33 IO,G7,VDDIO_SD0_EMMC,"IOBLK_G7_REG_EMMC_CLK
+0x0300_191C","FMUX_GPIO_REG_IOCTRL_EMMC_CLK
+0x0300_1050",0x1,"IO EMMC_CLK function select : 
+
+    0 : EMMC_CLK 
+
+    1 : SPINOR_SCK (default)
+
+    2 : SPINAND_CLK 
+
+    3 : XGPIOA[22] 
+
+    Others : Reserved",
+22,EMMC_DAT0,18OD33 IO,G7,VDDIO_SD0_EMMC,"IOBLK_G7_REG_EMMC_DAT0
+0x0300_1920","FMUX_GPIO_REG_IOCTRL_EMMC_DAT0
+0x0300_1054",0x1,"IO EMMC_DAT0 function select : 
+
+    0 : EMMC_DAT[0] 
+
+    1 : SPINOR_MOSI (default)
+
+    2 : SPINAND_MOSI 
+
+    3 : XGPIOA[25] 
+
+    Others : Reserved",
+23,EMMC_DAT3,18OD33 IO,G7,VDDIO_SD0_EMMC,"IOBLK_G7_REG_EMMC_DAT3
+0x0300_1924","FMUX_GPIO_REG_IOCTRL_EMMC_DAT3
+0x0300_1058",0x1,"IO EMMC_DAT3 function select : 
+
+    0 : EMMC_DAT[3] 
+
+    1 : SPINOR_WP_X (default)
+
+    2 : SPINAND_WP 
+
+    3 : XGPIOA[27] 
+
+    Others : Reserved",
+24,EMMC_CMD,18OD33 IO,G7,VDDIO_SD0_EMMC,"IOBLK_G7_REG_EMMC_CMD
+0x0300_1928","FMUX_GPIO_REG_IOCTRL_EMMC_CMD
+0x0300_105C",0x1,"IO EMMC_CMD function select : 
+
+    0 : EMMC_CMD 
+
+    1 : SPINOR_MISO (default)
+
+    2 : SPINAND_MISO 
+
+    3 : XGPIOA[23] 
+
+    Others : Reserved",
+25,EMMC_DAT1,18OD33 IO,G7,VDDIO_SD0_EMMC,"IOBLK_G7_REG_EMMC_DAT1
+0x0300_192C","FMUX_GPIO_REG_IOCTRL_EMMC_DAT1
+0x0300_1060",0x1,"IO EMMC_DAT1 function select : 
+
+    0 : EMMC_DAT[1] 
+
+    1 : SPINOR_CS_X (default)
+
+    2 : SPINAND_CS 
+
+    3 : XGPIOA[24] 
+
+    Others : Reserved",
+26,JTAG_CPU_TMS,18OD33 IO,G7,VDDIO_SD0_EMMC,"IOBLK_G7_REG_JTAG_CPU_TMS
+0x0300_1930","FMUX_GPIO_REG_IOCTRL_JTAG_CPU_TMS
+0x0300_1064",0x0,"IO JTAG_CPU_TMS function select : 
+    0 : CR_4WTMS (default)
+    1 : CAM_MCLK0 
+    2 : PWM[7] 
+    3 : XGPIOA[19] 
+    4 : UART1_RTS 
+    5 : AUX0 
+    6 : UART1_TX 
+    7 : VO_D[28] 
+    Others : Reserved",
+27,JTAG_CPU_TCK,18OD33 IO,G7,VDDIO_SD0_EMMC,"IOBLK_G7_REG_JTAG_CPU_TCK
+0x0300_1934","FMUX_GPIO_REG_IOCTRL_JTAG_CPU_TCK
+0x0300_1068",0x0,"IO JTAG_CPU_TCK function select : 
+    0 : CR_4WTCK (default)
+    1 : CAM_MCLK1 
+    2 : PWM[6] 
+    3 : XGPIOA[18] 
+    4 : UART1_CTS 
+    5 : AUX1 
+    6 : UART1_RX 
+    7 : VO_D[29] 
+    Others : Reserved",
+28,IIC0_SCL,18OD33 IO,G7,VDDIO_SD0_EMMC,"IOBLK_G7_REG_IIC0_SCL
+0x0300_193C","FMUX_GPIO_REG_IOCTRL_IIC0_SCL
+0x0300_1070",0x0,"IO IIC0_SCL function select : 
+    0 : CR_4WTDI (default)
+    1 : UART1_TX 
+    2 : UART2_TX 
+    3 : XGPIOA[28] 
+    5 : WG0_D0 
+    7 : DBG[10] 
+    Others : Reserved",
+29,IIC0_SDA,18OD33 IO,G7,VDDIO_SD0_EMMC,"IOBLK_G7_REG_IIC0_SDA
+0x0300_1940","FMUX_GPIO_REG_IOCTRL_IIC0_SDA
+0x0300_1074",0x0,"IO IIC0_SDA function select : 
+    0 : CR_4WTDO (default)
+    1 : UART1_RX 
+    2 : UART2_RX 
+    3 : XGPIOA[29] 
+    5 : WG0_D1 
+    6 : WG1_D0 
+    7 : DBG[11] 
+    Others : Reserved",
+30,AUX0,18OD33 IO,G7,VDDIO_SD0_EMMC,"IOBLK_G7_REG_AUX0
+0x0300_1944","FMUX_GPIO_REG_IOCTRL_AUX0
+0x0300_1078",0x3,"IO AUX0 function select : 
+
+    0 : AUX0 
+
+    3 : XGPIOA[30] (default)
+
+    4 : IIS1_MCLK 
+
+    5 : VO_D[31] 
+
+    6 : WG1_D1 
+
+    7 : DBG[12] 
+
+    Others : Reserved",
+38,PWR_VBAT_DET,1.8V GPIO,GRTC,VDDIO_RTC,"IOBLK_GRTC_REG_PWR_VBAT_DET
+0x0502_7000","FMUX_GPIO_REG_IOCTRL_PWR_VBAT_DET
+0x0300_107C",0x0,"IO PWR_VBAT_DET function select : 
+
+    0 : PWR_VBAT_DET (default)
+
+    Others : Reserved",
+39,PWR_RSTN,1.8V GPIO,GRTC,VDDIO_RTC,"IOBLK_GRTC_REG_PWR_RSTN
+0x0502_7004","FMUX_GPIO_REG_IOCTRL_PWR_RSTN
+0x0300_1080",0x0,"IO PWR_RSTN function select : 
+
+    0 : PWR_RSTN (default)
+
+    Others : Reserved",
+40,PWR_SEQ1,1.8V GPIO,GRTC,VDDIO_RTC,"IOBLK_GRTC_REG_PWR_SEQ1
+0x0502_7008","FMUX_GPIO_REG_IOCTRL_PWR_SEQ1
+0x0300_1084",0x0,"IO PWR_SEQ1 function select : 
+
+    0 : PWR_SEQ1 (default)
+
+    3 : PWR_GPIO[3] 
+
+    Others : Reserved",
+41,PWR_SEQ2,1.8V GPIO,GRTC,VDDIO_RTC,"IOBLK_GRTC_REG_PWR_SEQ2
+0x0502_700C","FMUX_GPIO_REG_IOCTRL_PWR_SEQ2
+0x0300_1088",0x0,"IO PWR_SEQ2 function select : 
+
+    0 : PWR_SEQ2 (default)
+
+    3 : PWR_GPIO[4] 
+
+    Others : Reserved",
+43,PWR_WAKEUP0,1.8V GPIO,GRTC,VDDIO_RTC,"IOBLK_GRTC_REG_PWR_WAKEUP0
+0x0502_7018","FMUX_GPIO_REG_IOCTRL_PWR_WAKEUP0
+0x0300_1090",0x0,"IO PWR_WAKEUP0 function select : 
+
+    0 : PWR_WAKEUP0 (default)
+
+    1 : PWR_IR0 
+
+    2 : PWR_UART0_TX 
+
+    3 : PWR_GPIO[6] 
+
+    4 : UART1_TX 
+
+    5 : IIC4_SCL 
+
+    6 : EPHY_LNK_LED 
+
+    7 : WG2_D0 
+
+    Others : Reserved",
+44,PWR_BUTTON1,1.8V GPIO,GRTC,VDDIO_RTC,"IOBLK_GRTC_REG_PWR_BUTTON1
+0x0502_7020","FMUX_GPIO_REG_IOCTRL_PWR_BUTTON1
+0x0300_1098",0x0,"IO PWR_BUTTON1 function select : 
+
+    0 : PWR_BUTTON1 (default)
+
+    3 : PWR_GPIO[8] 
+
+    4 : UART1_RX 
+
+    5 : IIC4_SDA 
+
+    6 : EPHY_SPD_LED 
+
+    7 : WG2_D1 
+
+    Others : Reserved",
+45,XTAL_XIN,Xtal,GRTC,VDDIO_RTC,"IOBLK_GRTC_REG_XTAL_XIN
+0x0502_7028","FMUX_GPIO_REG_IOCTRL_XTAL_XIN
+0x0300_10A0",0x0,"IO XTAL_XIN function select : 
+
+    0 : PWR_XTAL_CLKIN (default)
+
+    Others : Reserved",
+47,PWR_GPIO0,1.8V GPIO,GRTC,VDDIO_RTC,"IOBLK_GRTC_REG_PWR_GPIO0
+0x0502_702C","FMUX_GPIO_REG_IOCTRL_PWR_GPIO0
+0x0300_10A4",0x0,"IO PWR_GPIO0 function select : 
+
+    0 : PWR_GPIO[0] (default)
+
+    1 : UART2_TX 
+
+    2 : PWR_UART0_RX 
+
+    4 : PWM[8] 
+
+    Others : Reserved",
+48,PWR_GPIO1,1.8V GPIO,GRTC,VDDIO_RTC,"IOBLK_GRTC_REG_PWR_GPIO1
+0x0502_7030","FMUX_GPIO_REG_IOCTRL_PWR_GPIO1
+0x0300_10A8",0x0,"IO PWR_GPIO1 function select : 
+    0 : PWR_GPIO[1] (default)
+    1 : UART2_RX 
+    3 : EPHY_LNK_LED 
+    4 : PWM[9] 
+    5 : PWR_IIC_SCL 
+    6 : IIC2_SCL 
+    7 : CR_SDA0 
+    Others : Reserved",
+49,PWR_GPIO2,1.8V GPIO,GRTC,VDDIO_RTC,"IOBLK_GRTC_REG_PWR_GPIO2
+0x0502_7034","FMUX_GPIO_REG_IOCTRL_PWR_GPIO2
+0x0300_10AC",0x0,"IO PWR_GPIO2 function select : 
+    0 : PWR_GPIO[2] (default)
+    2 : PWR_SECTICK 
+    3 : EPHY_SPD_LED 
+    4 : PWM[10] 
+    5 : PWR_IIC_SDA 
+    6 : IIC2_SDA 
+    7 : CR_2WTCK 
+    Others : Reserved",
+51,SD1_D3,18OD33 IO,GRTC,VDDIO_SD1,"IOBLK_GRTC_REG_SD1_D3
+0x0502_7058","FMUX_GPIO_REG_IOCTRL_SD1_D3
+0x0300_10D0",0x6,"IO SD1_D3 function select : 
+
+    0 : PWR_SD1_D3_VO32 
+
+    1 : SPI2_CS_X 
+
+    2 : IIC1_SCL 
+
+    3 : PWR_GPIO[18] 
+
+    4 : CAM_MCLK0 
+
+    5 : UART3_CTS 
+
+    6 : PWR_SPINOR1_CS_X (default)
+
+    7 : PWM[4] 
+
+    Others : Reserved","SD1_D3 or VO[32]
+Check 0x0502_70E4"
+52,SD1_D2,18OD33 IO,GRTC,VDDIO_SD1,"IOBLK_GRTC_REG_SD1_D2
+0x0502_705C","FMUX_GPIO_REG_IOCTRL_SD1_D2
+0x0300_10D4",0x6,"IO SD1_D2 function select : 
+
+    0 : PWR_SD1_D2_VO33 
+
+    1 : IIC1_SCL 
+
+    2 : UART2_TX 
+
+    3 : PWR_GPIO[19] 
+
+    4 : CAM_MCLK0 
+
+    5 : UART3_TX 
+
+    6 : PWR_SPINOR1_HOLD_X (default)
+
+    7 : PWM[5] 
+
+    Others : Reserved","SD1_D2 or VO[33]
+Check 0x0502_70E4"
+53,SD1_D1,18OD33 IO,GRTC,VDDIO_SD1,"IOBLK_GRTC_REG_SD1_D1
+0x0502_7060","FMUX_GPIO_REG_IOCTRL_SD1_D1
+0x0300_10D8",0x6,"IO SD1_D1 function select : 
+
+    0 : PWR_SD1_D1_VO34 
+
+    1 : IIC1_SDA 
+
+    2 : UART2_RX 
+
+    3 : PWR_GPIO[20] 
+
+    4 : CAM_MCLK1 
+
+    5 : UART3_RX 
+
+    6 : PWR_SPINOR1_WP_X (default)
+
+    7 : PWM[6] 
+
+    Others : Reserved","SD1_D1 or VO[34]
+Check 0x0502_70E4"
+54,SD1_D0,18OD33 IO,GRTC,VDDIO_SD1,"IOBLK_GRTC_REG_SD1_D0
+0x0502_7064","FMUX_GPIO_REG_IOCTRL_SD1_D0
+0x0300_10DC",0x6,"IO SD1_D0 function select : 
+
+    0 : PWR_SD1_D0_VO35 
+
+    1 : SPI2_SDI 
+
+    2 : IIC1_SDA 
+
+    3 : PWR_GPIO[21] 
+
+    4 : CAM_MCLK1 
+
+    5 : UART3_RTS 
+
+    6 : PWR_SPINOR1_MISO (default)
+
+    7 : PWM[7] 
+
+    Others : Reserved","SD1_D0 or VO[35]
+Check 0x0502_70E4"
+55,SD1_CMD,18OD33 IO,GRTC,VDDIO_SD1,"IOBLK_GRTC_REG_SD1_CMD
+0x0502_7068","FMUX_GPIO_REG_IOCTRL_SD1_CMD
+0x0300_10E0",0x6,"IO SD1_CMD function select : 
+
+    0 : PWR_SD1_CMD_VO36 
+
+    1 : SPI2_SDO 
+
+    2 : IIC3_SCL 
+
+    3 : PWR_GPIO[22] 
+
+    4 : CAM_VS0 
+
+    5 : EPHY_LNK_LED 
+
+    6 : PWR_SPINOR1_MOSI (default)
+
+    7 : PWM[8] 
+
+    Others : Reserved","SD1_CMD or VO[36]
+Check 0x0502_70E4"
+56,SD1_CLK,18OD33 IO,GRTC,VDDIO_SD1,"IOBLK_GRTC_REG_SD1_CLK
+0x0502_706C","FMUX_GPIO_REG_IOCTRL_SD1_CLK
+0x0300_10E4",0x6,"IO SD1_CLK function select : 
+
+    0 : PWR_SD1_CLK_VO37 
+
+    1 : SPI2_SCK 
+
+    2 : IIC3_SDA 
+
+    3 : PWR_GPIO[23] 
+
+    4 : CAM_HS0 
+
+    5 : EPHY_SPD_LED 
+
+    6 : PWR_SPINOR1_SCK (default)
+
+    7 : PWM[9] 
+
+    Others : Reserved","SD1_CLK or VO[37]
+Check 0x0502_70E4"
+58,PWM0_BUCK,1.8V GPIO,G1,VDD18A_USB_PLL_ETH,"IOBLK_G1_REG_PWM0_BUCK
+0x0300_1804","FMUX_GPIO_REG_IOCTRL_PWM0_BUCK
+0x0300_10EC",0x3,"IO PWM0_BUCK function select : 
+
+    0 : PWM[0] 
+
+    3 : XGPIOB[0] (default)
+
+    Others : Reserved",
+59,ADC1,1.8V GPIO,G1,VDD18A_USB_PLL_ETH,"IOBLK_G1_REG_ADC1
+0x0300_1810","FMUX_GPIO_REG_IOCTRL_ADC1
+0x0300_10F8",0x3,"IO ADC1 function select : 
+
+    3 : XGPIOB[3] (default)
+
+    4 : KEY_COL2 
+
+    Others : Reserved",
+60,USB_VBUS_DET,1.8V GPIO,G1,VDD18A_USB_PLL_ETH,"IOBLK_G1_REG_USB_VBUS_DET
+0x0300_1820","FMUX_GPIO_REG_IOCTRL_USB_VBUS_DET
+0x0300_1108",0x0,"IO USB_VBUS_DET function select : 
+
+    0 : USB_VBUS_DET (default)
+
+    3 : XGPIOB[6] 
+
+    4 : CAM_MCLK0 
+
+    5 : CAM_MCLK1 
+
+    Others : Reserved",
+62,PAD_ETH_TXP___EPHY_RXN,"ETH GPIO
+(1.8V)",,VDD18A_USB_PLL_ETH,#N/A,"FMUX_GPIO_REG_IOCTRL_PAD_ETH_TXP
+0x0300_1124",0x3,"IO PAD_ETH_TXP function select : 
+
+    1 : UART3_RX 
+
+    2 : IIC1_SCL 
+
+    3 : XGPIOB[25] (default)
+
+    4 : PWM[13] 
+
+    5 : CAM_MCLK0 
+
+    6 : SPI1_SDO 
+
+    7 : IIS2_LRCK 
+
+    Others : Reserved",
+63,PAD_ETH_TXM___EPHY_RXP,"ETH GPIO
+(1.8V)",,VDD18A_USB_PLL_ETH,#N/A,"FMUX_GPIO_REG_IOCTRL_PAD_ETH_TXM
+0x0300_1128",0x3,"IO PAD_ETH_TXM function select : 
+
+    1 : UART3_RTS 
+
+    2 : IIC1_SDA 
+
+    3 : XGPIOB[24] (default)
+
+    4 : PWM[12] 
+
+    5 : CAM_MCLK1 
+
+    6 : SPI1_SDI 
+
+    7 : IIS2_BCLK 
+
+    Others : Reserved",
+64,PAD_ETH_RXP___EPHY_TXN,"ETH GPIO
+(1.8V)",,VDD18A_USB_PLL_ETH,#N/A,"FMUX_GPIO_REG_IOCTRL_PAD_ETH_RXP
+0x0300_112C",0x3,"IO PAD_ETH_RXP function select : 
+
+    1 : UART3_TX 
+
+    2 : CAM_MCLK1 
+
+    3 : XGPIOB[27] (default)
+
+    4 : PWM[15] 
+
+    5 : CAM_HS0 
+
+    6 : SPI1_SCK 
+
+    7 : IIS2_DO 
+
+    Others : Reserved",
+65,PAD_ETH_RXM___EPHY_TXP,"ETH GPIO
+(1.8V)",,VDD18A_USB_PLL_ETH,#N/A,"FMUX_GPIO_REG_IOCTRL_PAD_ETH_RXM
+0x0300_1130",0x3,"IO PAD_ETH_RXM function select : 
+
+    1 : UART3_CTS 
+
+    2 : CAM_MCLK0 
+
+    3 : XGPIOB[26] (default)
+
+    4 : PWM[14] 
+
+    5 : CAM_VS0 
+
+    6 : SPI1_CS_X 
+
+    7 : IIS2_DI 
+
+    Others : Reserved",
+72,PAD_MIPIRX4N,1.8V GPIO,G12,VDD18A_MIPI,"IOBLK_G12_REG_PAD_MIPIRX4N
+0x0300_1C38","FMUX_GPIO_REG_IOCTRL_PAD_MIPIRX4N
+0x0300_116C",0x0,"IO PAD_MIPIRX4N function select : 
+    0 : CR_SCL0 (default)
+    1 : VI0_CLK 
+    2 : VI1_D[13] 
+    3 : XGPIOC[2] 
+    4 : IIC1_SDA 
+    5 : CAM_MCLK0 
+    6 : KEY_ROW0 
+    7 : MUX_SPI1_SCK 
+    Others : Reserved",
+73,PAD_MIPIRX4P,1.8V GPIO,G12,VDD18A_MIPI,"IOBLK_G12_REG_PAD_MIPIRX4P
+0x0300_1C3C","FMUX_GPIO_REG_IOCTRL_PAD_MIPIRX4P
+0x0300_1170",0x0,"IO PAD_MIPIRX4P function select : 
+    0 : CR_SDA0 (default)
+    1 : VI0_D[0] 
+    2 : VI1_D[14] 
+    3 : XGPIOC[3] 
+    4 : IIC1_SCL 
+    5 : CAM_MCLK1 
+    6 : KEY_ROW1 
+    7 : MUX_SPI1_CS 
+    Others : Reserved",
+74,PAD_MIPIRX3N,1.8V GPIO,G12,VDD18A_MIPI,"IOBLK_G12_REG_PAD_MIPIRX3N
+0x0300_1C40","FMUX_GPIO_REG_IOCTRL_PAD_MIPIRX3N
+0x0300_1174",0x3,"IO PAD_MIPIRX3N function select : 
+    0 : CR_2WTMS 
+    1 : VI0_D[1] 
+    2 : VI1_D[15] 
+    3 : XGPIOC[4] (default)
+    4 : CAM_MCLK0 
+    7 : MUX_SPI1_MISO 
+    Others : Reserved",
+75,PAD_MIPIRX3P,1.8V GPIO,G12,VDD18A_MIPI,"IOBLK_G12_REG_PAD_MIPIRX3P
+0x0300_1C44","FMUX_GPIO_REG_IOCTRL_PAD_MIPIRX3P
+0x0300_1178",0x3,"IO PAD_MIPIRX3P function select : 
+    0 : CR_2WTCK 
+    1 : VI0_D[2] 
+    2 : VI1_D[16] 
+    3 : XGPIOC[5] (default)
+    7 : MUX_SPI1_MOSI 
+    Others : Reserved",
+76,PAD_MIPIRX2N,1.8V GPIO,G12,VDD18A_MIPI,"IOBLK_G12_REG_PAD_MIPIRX2N
+0x0300_1C48","FMUX_GPIO_REG_IOCTRL_PAD_MIPIRX2N
+0x0300_117C",0x3,"IO PAD_MIPIRX2N function select : 
+
+    1 : VI0_D[3] 
+
+    2 : VO_D[10] 
+
+    3 : XGPIOC[6] (default)
+
+    4 : VI1_D[17] 
+
+    5 : IIC4_SCL 
+
+    7 : DBG[6] 
+
+    Others : Reserved",
+77,PAD_MIPIRX2P,1.8V GPIO,G12,VDD18A_MIPI,"IOBLK_G12_REG_PAD_MIPIRX2P
+0x0300_1C4C","FMUX_GPIO_REG_IOCTRL_PAD_MIPIRX2P
+0x0300_1180",0x3,"IO PAD_MIPIRX2P function select : 
+
+    1 : VI0_D[4] 
+
+    2 : VO_D[9] 
+
+    3 : XGPIOC[7] (default)
+
+    4 : VI1_D[18] 
+
+    5 : IIC4_SDA 
+
+    7 : DBG[7] 
+
+    Others : Reserved",
+78,PAD_MIPIRX1N,1.8V GPIO,G12,VDD18A_MIPI,"IOBLK_G12_REG_PAD_MIPIRX1N
+0x0300_1C50","FMUX_GPIO_REG_IOCTRL_PAD_MIPIRX1N
+0x0300_1184",0x3,"IO PAD_MIPIRX1N function select : 
+
+    1 : VI0_D[5] 
+
+    2 : VO_D[8] 
+
+    3 : XGPIOC[8] (default)
+
+    6 : KEY_ROW3 
+
+    7 : DBG[8] 
+
+    Others : Reserved",
+79,PAD_MIPIRX1P,1.8V GPIO,G12,VDD18A_MIPI,"IOBLK_G12_REG_PAD_MIPIRX1P
+0x0300_1C54","FMUX_GPIO_REG_IOCTRL_PAD_MIPIRX1P
+0x0300_1188",0x3,"IO PAD_MIPIRX1P function select : 
+
+    1 : VI0_D[6] 
+
+    2 : VO_D[7] 
+
+    3 : XGPIOC[9] (default)
+
+    4 : IIC1_SDA 
+
+    6 : KEY_ROW2 
+
+    7 : DBG[9] 
+
+    Others : Reserved",
+80,PAD_MIPIRX0N,1.8V GPIO,G12,VDD18A_MIPI,"IOBLK_G12_REG_PAD_MIPIRX0N
+0x0300_1C58","FMUX_GPIO_REG_IOCTRL_PAD_MIPIRX0N
+0x0300_118C",0x3,"IO PAD_MIPIRX0N function select : 
+
+    1 : VI0_D[7] 
+
+    2 : VO_D[6] 
+
+    3 : XGPIOC[10] (default)
+
+    4 : IIC1_SCL 
+
+    5 : CAM_MCLK1 
+
+    7 : DBG[10] 
+
+    Others : Reserved",
+81,PAD_MIPIRX0P,1.8V GPIO,G12,VDD18A_MIPI,"IOBLK_G12_REG_PAD_MIPIRX0P
+0x0300_1C5C","FMUX_GPIO_REG_IOCTRL_PAD_MIPIRX0P
+0x0300_1190",0x3,"IO PAD_MIPIRX0P function select : 
+
+    1 : VI0_D[8] 
+
+    2 : VO_D[5] 
+
+    3 : XGPIOC[11] (default)
+
+    4 : CAM_MCLK0 
+
+    7 : DBG[11] 
+
+    Others : Reserved",
+83,PAD_MIPI_TXM2,1.8V GPIO,G12,VDD18A_MIPI,"IOBLK_G12_REG_PAD_MIPI_TXM2
+0x0300_1C70","FMUX_GPIO_REG_IOCTRL_PAD_MIPI_TXM2
+0x0300_11A4",0x3,"IO PAD_MIPI_TXM2 function select : 
+    0 : CR_SDA0 
+    1 : VI0_D[13] 
+    2 : VO_D[0] 
+    3 : XGPIOC[16] (default)
+    4 : IIC1_SDA 
+    5 : PWM[8] 
+    6 : SPI0_SCK 
+    7 : SD1_D2 
+    Others : Reserved",
+84,PAD_MIPI_TXP2,1.8V GPIO,G12,VDD18A_MIPI,"IOBLK_G12_REG_PAD_MIPI_TXP2
+0x0300_1C74","FMUX_GPIO_REG_IOCTRL_PAD_MIPI_TXP2
+0x0300_11A8",0x3,"IO PAD_MIPI_TXP2 function select : 
+    0 : CR_SCL0 
+    1 : VI0_D[14] 
+    2 : VO_CLK0 
+    3 : XGPIOC[17] (default)
+    4 : IIC1_SCL 
+    5 : PWM[9] 
+    6 : SPI0_CS_X 
+    7 : SD1_D3 
+    Others : Reserved",
+85,PAD_MIPI_TXM1,1.8V GPIO,G12,VDD18A_MIPI,"IOBLK_G12_REG_PAD_MIPI_TXM1
+0x0300_1C78","FMUX_GPIO_REG_IOCTRL_PAD_MIPI_TXM1
+0x0300_11AC",0x3,"IO PAD_MIPI_TXM1 function select : 
+    0 : CR_2WTMS 
+    1 : VI0_D[11] 
+    2 : VO_D[2] 
+    3 : XGPIOC[14] (default)
+    4 : IIC2_SDA 
+    5 : PWM[10] 
+    6 : SPI0_SDO 
+    7 : DBG[14] 
+    Others : Reserved",
+86,PAD_MIPI_TXP1,1.8V GPIO,G12,VDD18A_MIPI,"IOBLK_G12_REG_PAD_MIPI_TXP1
+0x0300_1C7C","FMUX_GPIO_REG_IOCTRL_PAD_MIPI_TXP1
+0x0300_11B0",0x3,"IO PAD_MIPI_TXP1 function select : 
+    0 : CR_2WTCK 
+    1 : VI0_D[12] 
+    2 : VO_D[1] 
+    3 : XGPIOC[15] (default)
+    4 : IIC2_SCL 
+    5 : PWM[11] 
+    6 : SPI0_SDI 
+    7 : DBG[15] 
+    Others : Reserved",
+87,PAD_MIPI_TXM0,1.8V GPIO,G12,VDD18A_MIPI,"IOBLK_G12_REG_PAD_MIPI_TXM0
+0x0300_1C80","FMUX_GPIO_REG_IOCTRL_PAD_MIPI_TXM0
+0x0300_11B4",0x3,"IO PAD_MIPI_TXM0 function select : 
+
+    1 : VI0_D[9] 
+
+    2 : VO_D[4] 
+
+    3 : XGPIOC[12] (default)
+
+    4 : CAM_MCLK1 
+
+    5 : PWM[14] 
+
+    6 : CAM_VS0 
+
+    7 : DBG[12] 
+
+    Others : Reserved",
+88,PAD_MIPI_TXP0,1.8V GPIO,G12,VDD18A_MIPI,"IOBLK_G12_REG_PAD_MIPI_TXP0
+0x0300_1C84","FMUX_GPIO_REG_IOCTRL_PAD_MIPI_TXP0
+0x0300_11B8",0x3,"IO PAD_MIPI_TXP0 function select : 
+
+    1 : VI0_D[10] 
+
+    2 : VO_D[3] 
+
+    3 : XGPIOC[13] (default)
+
+    4 : CAM_MCLK0 
+
+    5 : PWM[15] 
+
+    6 : CAM_HS0 
+
+    7 : DBG[13] 
+
+    Others : Reserved",
+2,PAD_AUD_AINL_MIC,"AUDIO GPIO 
+(1.8V)",,VDD18A_MIPI,#N/A,"FMUX_GPIO_REG_IOCTRL_PAD_AUD_AINL_MIC
+0x0300_11BC",0x3,"IO PAD_AUD_AINL_MIC function select : 
+
+    3 : XGPIOC[23] (default)
+
+    4 : IIS1_BCLK 
+
+    5 : IIS2_BCLK 
+
+    Others : Reserved",
+4,PAD_AUD_AOUTR,"AUDIO GPIO 
+(1.8V)",,VDD18A_MIPI,#N/A,"FMUX_GPIO_REG_IOCTRL_PAD_AUD_AOUTR
+0x0300_11C8",0x3,"IO PAD_AUD_AOUTR function select : 
+
+    3 : XGPIOC[24] (default)
+
+    4 : IIS1_DI 
+
+    5 : IIS2_DO 
+
+    6 : IIS1_DO 
+
+    Others : Reserved",
+67,GPIO_RTX___EPHY_RTX,1.8V GPIO,G12,VDD18A_USB_PLL_ETH,"IOBLK_G12_REG_GPIO_RTX
+0x0300_1C8C","FMUX_GPIO_REG_IOCTRL_GPIO_RTX
+0x0300_11CC",0x3,"IO GPIO_RTX function select : 
+
+    3 : XGPIOB[23] (default)
+
+    4 : PWM[1] 
+
+    5 : CAM_MCLK0 
+
+    Others : Reserved","CPU SEL
+Low----CA53
+High---CA906"
+35,GPIO_ZQ___PAD_ZQ,1.8V GPIO,GRTC,VDDIO_RTC,"IOBLK_GRTC_REG_GPIO_ZQ
+0x0502_70E0","FMUX_GPIO_REG_IOCTRL_GPIO_ZQ
+0x0300_11D0",0x3,"IO GPIO_ZQ function select : 
+
+    3 : PWR_GPIO[24] (default)
+
+    4 : PWM[2] 
+
+    Others : Reserved",
+#N/A,PKG_TYPE0,1.8V GPIO,G1,VDD18A_USB_PLL_ETH,"IOBLK_G1_REG_PKG_TYPE0
+0x0300_181C","FMUX_GPIO_REG_IOCTRL_PKG_TYPE0
+0x0300_1104",0x0,"IO PKG_TYPE0 function select : 
+
+    0 : PKG_TYPE0 (default)
+
+    Others : Reserved",no pin out
+#N/A,PKG_TYPE1,1.8V GPIO,G1,VDD18A_USB_PLL_ETH,"IOBLK_G1_REG_PKG_TYPE1
+0x0300_1824","FMUX_GPIO_REG_IOCTRL_PKG_TYPE1
+0x0300_110C",0x0,"IO PKG_TYPE1 function select : 
+
+    0 : PKG_TYPE1 (default)
+
+    Others : Reserved",no pin out
+#N/A,PKG_TYPE2,1.8V GPIO,G1,VDD18A_USB_PLL_ETH,"IOBLK_G1_REG_PKG_TYPE2
+0x0300_1828","FMUX_GPIO_REG_IOCTRL_PKG_TYPE2
+0x0300_1110",0x0,"IO PKG_TYPE2 function select : 
+
+    0 : PKG_TYPE2 (default)
+
+    Others : Reserved",no pin out
+#N/A,MUX_SPI1_MISO,,,,#N/A,"FMUX_GPIO_REG_IOCTRL_MUX_SPI1_MISO
+0x0300_1114",0x3,"IO MUX_SPI1_MISO function select : 
+
+    1 : UART3_RTS 
+
+    2 : IIC1_SDA 
+
+    3 : XGPIOB[8] (default)
+
+    4 : PWM[9] 
+
+    5 : KEY_COL1 
+
+    6 : SPI1_SDI 
+
+    7 : DBG[14] 
+
+    Others : Reserved",Result is feed to PAD_MIPIRX3N func7
+#N/A,MUX_SPI1_MOSI,,,,#N/A,"FMUX_GPIO_REG_IOCTRL_MUX_SPI1_MOSI
+0x0300_1118",0x3,"IO MUX_SPI1_MOSI function select : 
+
+    1 : UART3_RX 
+
+    2 : IIC1_SCL 
+
+    3 : XGPIOB[7] (default)
+
+    4 : PWM[8] 
+
+    5 : KEY_COL0 
+
+    6 : SPI1_SDO 
+
+    7 : DBG[13] 
+
+    Others : Reserved",Result is feed to PAD_MIPIRX3P func7
+#N/A,MUX_SPI1_CS,,,,#N/A,"FMUX_GPIO_REG_IOCTRL_MUX_SPI1_CS
+0x0300_111C",0x3,"IO MUX_SPI1_CS function select : 
+
+    1 : UART3_CTS 
+
+    2 : CAM_MCLK0 
+
+    3 : XGPIOB[10] (default)
+
+    4 : PWM[11] 
+
+    5 : KEY_ROW3 
+
+    6 : SPI1_CS_X 
+
+    7 : DBG[16] 
+
+    Others : Reserved",Result is feed to PAD_MIPIRX4P func7
+#N/A,MUX_SPI1_SCK,,,,#N/A,"FMUX_GPIO_REG_IOCTRL_MUX_SPI1_SCK
+0x0300_1120",0x3,"IO MUX_SPI1_SCK function select : 
+
+    1 : UART3_TX 
+
+    2 : CAM_MCLK1 
+
+    3 : XGPIOB[9] (default)
+
+    4 : PWM[10] 
+
+    5 : KEY_ROW2 
+
+    6 : SPI1_SCK 
+
+    7 : DBG[15] 
+
+    Others : Reserved",Result is feed to PAD_MIPIRX4N func7
