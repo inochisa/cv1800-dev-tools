@@ -95,7 +95,7 @@ def parse_pins(filename: str) -> dict[int, dict]:
                 "id": parse_pin_num(row['Pin Num']),
                 "name": parse_pin_name(row['Pin Name']),
                 "type": parse_pin_io_type(row['IO Type']),
-                "pd": row['PowerDomain'],
+                "power_domain": row['PowerDomain'],
             }
 
             if row['IO_cfg_register'] != "#N/A":

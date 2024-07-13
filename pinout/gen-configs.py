@@ -33,7 +33,7 @@ def cook_pin_area(area: str):
 
 def cook_func_pindata(pin: dict):
     lines = [
-        "CV1800_FUNC_PIN({}, {},".format("PIN_" + pin["name"], "\"" + pin["pd"] + "\""),
+        "CV1800_FUNC_PIN({}, {},".format("PIN_" + pin["name"], pin["power_domain"]),
         "\t\t{},".format(str(pin["type"])),
         "\t\t{}, 0x{:03x}, {}),".format(cook_pin_area(pin["mux"]["area"]), pin["mux"]["offset"], pin["mux"]["max"]),
     ]
@@ -46,7 +46,7 @@ def cook_generate_pindata(pin: dict):
 
     if "sub" in pin["mux"]:
         lines = [
-            "CV1800_GENERATE_PIN_MUX2({}, {},".format("PIN_" + pin["name"], "\"" + pin["pd"] + "\""),
+            "CV1800_GENERATE_PIN_MUX2({}, {},".format("PIN_" + pin["name"], pin["power_domain"]),
             "\t\t\t {},".format(str(pin["type"])),
             "\t\t\t {}, 0x{:03x}, {},".format(cook_pin_area(pin["mux"]["area"]), pin["mux"]["offset"], pin["mux"]["max"]),
             "\t\t\t {}, 0x{:03x}, {},".format(cook_pin_area(pin["mux"]['sub']["area"]), pin["mux"]['sub']["offset"], pin["mux"]['sub']["max"]),
@@ -54,7 +54,7 @@ def cook_generate_pindata(pin: dict):
         ]
     else:
         lines = [
-            "CV1800_GENERAL_PIN({}, {},".format("PIN_" + pin["name"], "\"" + pin["pd"] + "\""),
+            "CV1800_GENERAL_PIN({}, {},".format("PIN_" + pin["name"], pin["power_domain"]),
             "\t\t   {},".format(str(pin["type"])),
             "\t\t   {}, 0x{:03x}, {},".format(cook_pin_area(pin["mux"]["area"]), pin["mux"]["offset"], pin["mux"]["max"]),
             "\t\t   {}, 0x{:03x}),".format(cook_pin_area(pin["iocfg"]["area"]), pin["iocfg"]["offset"]),
@@ -108,7 +108,9 @@ def print_misc_down(fp, chipname: str):
     value = """static const struct cv1800_pinctrl_data {0}_pindata = {{
 \t.pins = {0}_pins,
 \t.pindata = {0}_pin_data,
+\t.pdnames = {0}_power_domain_desc,
 \t.npins = ARRAY_SIZE({0}_pins),
+\t.npd = ARRAY_SIZE({0}_power_domain_desc),
 }};
 
 static const struct of_device_id {0}_pinctrl_ids[] = {{
@@ -133,12 +135,47 @@ MODULE_LICENSE("GPL");
 
     fp.write(value)
 
+def pin_to_power_domains(pins: dict):
+    return sorted(set([pin["power_domain"] for pin in pins.values()]))
+
+def print_power_domain_mapping(fp, chipname: str, pin: dict):
+    mapping = pin_to_power_domains(pins)
+    maxlength = max([len(domain) for domain in mapping]) + 8
+    if maxlength < 32:
+        vpos = 32
+    else:
+        vpos = maxlength + (8 - (maxlength % 8))
+
+    fp.write("enum {}_POWER_DOMAIN {{\n".format(chipname.upper()))
+    for id, name in enumerate(mapping):
+        nlen = len(name) + 8
+        ntabs = int((vpos - nlen + 7) / 8)
+        fp.write(("\t{}" + ntabs * "\t" + "= {}{}\n").format(name, id, "" if id + 1 == len(mapping) else ","))
+    fp.write("};\n")
+
+    fp.write("\n")
+
+    maxlength = maxlength + 2
+    if maxlength < 32:
+        vpos = 32
+    else:
+        vpos = maxlength + (8 - (maxlength % 8))
+    fp.write("static const char *{}_power_domain_desc[] = {{\n".format(chipname))
+    for name in mapping:
+        nlen = len(name) + 8 + 2
+        ntabs = int((vpos - nlen + 7) / 8)
+        fp.write(("\t[{0}]" + ntabs * "\t" + "= \"{0}\",\n").format(name))
+    fp.write("};\n")
+
+
 if __name__ == "__main__":
     chipname = sys.argv[1]
     pins = pindef.parse_pins(chipname + "_pindef.csv")
 
     with open("pinctrl-" + chipname + ".c", "w", encoding="utf-8") as fp:
         print_misc_top(fp, chipname)
+        fp.write("\n")
+        print_power_domain_mapping(fp, chipname, pins)
         fp.write("\n")
         print_pins(fp, chipname, pins)
         fp.write("\n")
