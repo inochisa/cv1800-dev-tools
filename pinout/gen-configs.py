@@ -236,8 +236,8 @@ def print_vddio(fp, chipname):
 }}
 """.format(chipname))
 
-    def print_vddio_schmit_func(fp, chipname):
-        head = "static int {0}_get_schmit_map(".format(chipname)
+    def print_vddio_schmitt_func(fp, chipname):
+        head = "static int {0}_get_schmitt_map(".format(chipname)
         tabs = int(len(head) / 8)
         spaces = len(head) % 8
         fp.write(head + "struct cv1800_pin *pin, const u32 *psmap,\n")
@@ -247,17 +247,17 @@ def print_vddio(fp, chipname):
 	u32 pstate = psmap[pin->power_domain];
 
 	if (type == IO_TYPE_1V8_ONLY) {{
-		*map = {0}_1v8_schmit_map;
-		return ARRAY_SIZE({0}_1v8_schmit_map);
+		*map = {0}_1v8_schmitt_map;
+		return ARRAY_SIZE({0}_1v8_schmitt_map);
 	}}
 
 	if (type == IO_TYPE_1V8_OR_3V3) {{
 		if (pstate == PIN_POWER_STATE_1V8) {{
-			*map = {0}_18od33_1v8_schmit_map;
-			return ARRAY_SIZE({0}_18od33_1v8_schmit_map);
+			*map = {0}_18od33_1v8_schmitt_map;
+			return ARRAY_SIZE({0}_18od33_1v8_schmitt_map);
 		}} else if (pstate == PIN_POWER_STATE_3V3) {{
-			*map = {0}_18od33_3v3_schmit_map;
-			return ARRAY_SIZE({0}_18od33_3v3_schmit_map);
+			*map = {0}_18od33_3v3_schmitt_map;
+			return ARRAY_SIZE({0}_18od33_3v3_schmitt_map);
 		}}
 	}}
 
@@ -291,20 +291,20 @@ def print_vddio(fp, chipname):
     print_vddio_oc_func(fp, chipname)
     fp.write("\n")
 
-    print_vddio_map(fp, chipname, "schmit", "1v8", [str(get_vddio_schmit(value)) for value in get_vddio_map(PIN_IO_TYPE.IO_TYPE_1V8_ONLY, 1800)["map"]["schmit-trigger"]])
+    print_vddio_map(fp, chipname, "schmitt", "1v8", [str(get_vddio_schmit(value)) for value in get_vddio_map(PIN_IO_TYPE.IO_TYPE_1V8_ONLY, 1800)["map"]["schmit-trigger"]])
     fp.write("\n")
-    print_vddio_map(fp, chipname, "schmit", "18od33_1v8", [str(get_vddio_schmit(value)) for value in get_vddio_map(PIN_IO_TYPE.IO_TYPE_1V8_OR_3V3, 1800)["map"]["schmit-trigger"]])
+    print_vddio_map(fp, chipname, "schmitt", "18od33_1v8", [str(get_vddio_schmit(value)) for value in get_vddio_map(PIN_IO_TYPE.IO_TYPE_1V8_OR_3V3, 1800)["map"]["schmit-trigger"]])
     fp.write("\n")
-    print_vddio_map(fp, chipname, "schmit", "18od33_3v3", [str(get_vddio_schmit(value)) for value in get_vddio_map(PIN_IO_TYPE.IO_TYPE_1V8_OR_3V3, 3300)["map"]["schmit-trigger"]])
+    print_vddio_map(fp, chipname, "schmitt", "18od33_3v3", [str(get_vddio_schmit(value)) for value in get_vddio_map(PIN_IO_TYPE.IO_TYPE_1V8_OR_3V3, 3300)["map"]["schmit-trigger"]])
     fp.write("\n")
 
-    print_vddio_schmit_func(fp,chipname)
+    print_vddio_schmitt_func(fp,chipname)
     fp.write("\n")
     fp.write("""static const struct cv1800_vddio_cfg_ops {0}_vddio_cfg_ops = {{
 	.get_pull_up\t\t= {0}_get_pull_up,
 	.get_pull_down\t\t= {0}_get_pull_down,
 	.get_oc_map\t\t= {0}_get_oc_map,
-	.get_schmit_map\t\t= {0}_get_schmit_map,
+	.get_schmitt_map\t\t= {0}_get_schmitt_map,
 }};
 """.format(chipname))
 
