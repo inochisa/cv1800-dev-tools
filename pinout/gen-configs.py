@@ -6,6 +6,7 @@ import pindef
 import datetime
 import math
 from pindef import PIN_IO_TYPE
+from vddio import CV18XX_VDDIO_MAP
 
 def print_pins(fp, chipname: str, pins: dict):
     fp.write("static const struct pinctrl_pin_desc %s_pins[] = {\n" % chipname)
@@ -106,11 +107,12 @@ def print_misc_top(fp, chipname: str):
 
 def print_misc_down(fp, chipname: str):
     value = """static const struct cv1800_pinctrl_data {0}_pindata = {{
-\t.pins = {0}_pins,
-\t.pindata = {0}_pin_data,
-\t.pdnames = {0}_power_domain_desc,
-\t.npins = ARRAY_SIZE({0}_pins),
-\t.npd = ARRAY_SIZE({0}_power_domain_desc),
+\t.pins\t\t= {0}_pins,
+\t.pindata\t= {0}_pin_data,
+\t.pdnames\t= {0}_power_domain_desc,
+\t.vddio_ops\t= &{0}_vddio_cfg_ops,
+\t.npins\t\t= ARRAY_SIZE({0}_pins),
+\t.npd\t\t= ARRAY_SIZE({0}_power_domain_desc),
 }};
 
 static const struct of_device_id {0}_pinctrl_ids[] = {{
@@ -168,6 +170,145 @@ def print_power_domain_mapping(fp, chipname: str, pin: dict):
     fp.write("};\n")
 
 
+def print_vddio(fp, chipname):
+    def get_vddio_map(type, vddio):
+        return [map for map in CV18XX_VDDIO_MAP if map["type"] == type and map["VDDIO"] == vddio][0]
+    def get_vddio_schmit(value):
+        return value[0][1] if len(value) == 6 else 0
+    def print_vddio_pull(fp, chipname, state, *value):
+        fp.write("""static int {0}_get_pull_{1}(struct cv1800_pin *pin, const u32 *psmap)
+{{
+	u32 pstate = psmap[pin->power_domain];
+	enum cv1800_pin_io_type type = cv1800_pin_io_type(pin);
+
+	if (type == IO_TYPE_1V8_ONLY)
+		return {2};
+
+	if (type == IO_TYPE_1V8_OR_3V3) {{
+		if (pstate == PIN_POWER_STATE_1V8)
+			return {3};
+		if (pstate == PIN_POWER_STATE_3V3)
+			return {4};
+
+		return -EINVAL;
+	}}
+
+	return -ENOTSUPP;
+}}
+""".format(chipname, state, *value))
+
+    def print_vddio_map(fp, chipname, mtype, name, value):
+        fp.write("static const u32 {0}_{1}_{2}_map[] = {{\n".format(chipname, name, mtype))
+        fp.write("\t" + ",\n\t".join(value) + "\n")
+        fp.write("};\n")
+
+    def print_vddio_oc_func(fp, chipname):
+        head = "static int {0}_get_oc_map(".format(chipname)
+        tabs = int(len(head) / 8)
+        spaces = len(head) % 8
+        fp.write(head + "struct cv1800_pin *pin, const u32 *psmap,\n")
+        fp.write("\t" * tabs + " " * spaces + "const u32 **map)\n")
+        fp.write("""{{
+	enum cv1800_pin_io_type type = cv1800_pin_io_type(pin);
+	u32 pstate = psmap[pin->power_domain];
+
+	if (type == IO_TYPE_1V8_ONLY) {{
+		*map = {0}_1v8_oc_map;
+		return ARRAY_SIZE({0}_1v8_oc_map);
+	}}
+
+	if (type == IO_TYPE_1V8_OR_3V3) {{
+		if (pstate == PIN_POWER_STATE_1V8) {{
+			*map = {0}_18od33_1v8_oc_map;
+			return ARRAY_SIZE({0}_18od33_1v8_oc_map);
+		}} else if (pstate == PIN_POWER_STATE_3V3) {{
+			*map = {0}_18od33_3v3_oc_map;
+			return ARRAY_SIZE({0}_18od33_3v3_oc_map);
+		}}
+	}}
+
+	if (type == IO_TYPE_ETH) {{
+		*map = {0}_eth_oc_map;
+		return ARRAY_SIZE({0}_eth_oc_map);
+	}}
+
+	return -ENOTSUPP;
+}}
+""".format(chipname))
+
+    def print_vddio_schmit_func(fp, chipname):
+        head = "static int {0}_get_schmit_map(".format(chipname)
+        tabs = int(len(head) / 8)
+        spaces = len(head) % 8
+        fp.write(head + "struct cv1800_pin *pin, const u32 *psmap,\n")
+        fp.write("\t" * tabs + " " * spaces + "const u32 **map)\n")
+        fp.write("""{{
+	enum cv1800_pin_io_type type = cv1800_pin_io_type(pin);
+	u32 pstate = psmap[pin->power_domain];
+
+	if (type == IO_TYPE_1V8_ONLY) {{
+		*map = {0}_1v8_schmit_map;
+		return ARRAY_SIZE({0}_1v8_schmit_map);
+	}}
+
+	if (type == IO_TYPE_1V8_OR_3V3) {{
+		if (pstate == PIN_POWER_STATE_1V8) {{
+			*map = {0}_18od33_1v8_schmit_map;
+			return ARRAY_SIZE({0}_18od33_1v8_schmit_map);
+		}} else if (pstate == PIN_POWER_STATE_3V3) {{
+			*map = {0}_18od33_3v3_schmit_map;
+			return ARRAY_SIZE({0}_18od33_3v3_schmit_map);
+		}}
+	}}
+
+	return -ENOTSUPP;
+}}
+""".format(chipname))
+
+    print_vddio_pull(fp, chipname, "up",
+        get_vddio_map(PIN_IO_TYPE.IO_TYPE_1V8_ONLY, 1800)["map"]["pull-up"],
+        get_vddio_map(PIN_IO_TYPE.IO_TYPE_1V8_OR_3V3, 1800)["map"]["pull-up"],
+        get_vddio_map(PIN_IO_TYPE.IO_TYPE_1V8_OR_3V3, 3300)["map"]["pull-up"],
+    )
+    fp.write("\n")
+
+    print_vddio_pull(fp, chipname, "down",
+        get_vddio_map(PIN_IO_TYPE.IO_TYPE_1V8_ONLY, 1800)["map"]["pull-down"],
+        get_vddio_map(PIN_IO_TYPE.IO_TYPE_1V8_OR_3V3, 1800)["map"]["pull-down"],
+        get_vddio_map(PIN_IO_TYPE.IO_TYPE_1V8_OR_3V3, 3300)["map"]["pull-down"],
+    )
+    fp.write("\n")
+
+    print_vddio_map(fp, chipname, "oc", "1v8", [str(value[1]) for value in get_vddio_map(PIN_IO_TYPE.IO_TYPE_1V8_ONLY, 1800)["map"]["output-low"]])
+    fp.write("\n")
+    print_vddio_map(fp, chipname, "oc", "18od33_1v8", [str(value[1]) for value in get_vddio_map(PIN_IO_TYPE.IO_TYPE_1V8_OR_3V3, 1800)["map"]["output-low"]])
+    fp.write("\n")
+    print_vddio_map(fp, chipname, "oc", "18od33_3v3", [str(value[1]) for value in get_vddio_map(PIN_IO_TYPE.IO_TYPE_1V8_OR_3V3, 3300)["map"]["output-low"]])
+    fp.write("\n")
+    print_vddio_map(fp, chipname, "oc", "eth", [str(value[1]) for value in get_vddio_map(PIN_IO_TYPE.IO_TYPE_ETH, 1800)["map"]["output-low"]])
+    fp.write("\n")
+
+    print_vddio_oc_func(fp, chipname)
+    fp.write("\n")
+
+    print_vddio_map(fp, chipname, "schmit", "1v8", [str(get_vddio_schmit(value)) for value in get_vddio_map(PIN_IO_TYPE.IO_TYPE_1V8_ONLY, 1800)["map"]["schmit-trigger"]])
+    fp.write("\n")
+    print_vddio_map(fp, chipname, "schmit", "18od33_1v8", [str(get_vddio_schmit(value)) for value in get_vddio_map(PIN_IO_TYPE.IO_TYPE_1V8_OR_3V3, 1800)["map"]["schmit-trigger"]])
+    fp.write("\n")
+    print_vddio_map(fp, chipname, "schmit", "18od33_3v3", [str(get_vddio_schmit(value)) for value in get_vddio_map(PIN_IO_TYPE.IO_TYPE_1V8_OR_3V3, 3300)["map"]["schmit-trigger"]])
+    fp.write("\n")
+
+    print_vddio_schmit_func(fp,chipname)
+    fp.write("\n")
+    fp.write("""static const struct cv1800_vddio_cfg_ops {0}_vddio_cfg_ops = {{
+	.get_pull_up\t\t= {0}_get_pull_up,
+	.get_pull_down\t\t= {0}_get_pull_down,
+	.get_oc_map\t\t= {0}_get_oc_map,
+	.get_schmit_map\t\t= {0}_get_schmit_map,
+}};
+""".format(chipname))
+
+
 if __name__ == "__main__":
     chipname = sys.argv[1]
     pins = pindef.parse_pins(chipname + "_pindef.csv")
@@ -176,6 +317,8 @@ if __name__ == "__main__":
         print_misc_top(fp, chipname)
         fp.write("\n")
         print_power_domain_mapping(fp, chipname, pins)
+        fp.write("\n")
+        print_vddio(fp, chipname)
         fp.write("\n")
         print_pins(fp, chipname, pins)
         fp.write("\n")
