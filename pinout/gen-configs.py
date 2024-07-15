@@ -162,7 +162,7 @@ def print_power_domain_mapping(fp, chipname: str, pin: dict):
         vpos = 32
     else:
         vpos = maxlength + (8 - (maxlength % 8))
-    fp.write("static const char *{}_power_domain_desc[] = {{\n".format(chipname))
+    fp.write("static const char *const {}_power_domain_desc[] = {{\n".format(chipname))
     for name in mapping:
         nlen = len(name) + 8 + 2
         ntabs = int((vpos - nlen + 7) / 8)
