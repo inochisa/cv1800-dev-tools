@@ -291,11 +291,11 @@ def print_vddio(fp, chipname):
     print_vddio_oc_func(fp, chipname)
     fp.write("\n")
 
-    print_vddio_map(fp, chipname, "schmitt", "1v8", [str(get_vddio_schmit(value)) for value in get_vddio_map(PIN_IO_TYPE.IO_TYPE_1V8_ONLY, 1800)["map"]["schmit-trigger"]])
+    print_vddio_map(fp, chipname, "schmitt", "1v8", [str(get_vddio_schmit(value) * 1000) for value in get_vddio_map(PIN_IO_TYPE.IO_TYPE_1V8_ONLY, 1800)["map"]["schmit-trigger"]])
     fp.write("\n")
-    print_vddio_map(fp, chipname, "schmitt", "18od33_1v8", [str(get_vddio_schmit(value)) for value in get_vddio_map(PIN_IO_TYPE.IO_TYPE_1V8_OR_3V3, 1800)["map"]["schmit-trigger"]])
+    print_vddio_map(fp, chipname, "schmitt", "18od33_1v8", [str(get_vddio_schmit(value) * 1000) for value in get_vddio_map(PIN_IO_TYPE.IO_TYPE_1V8_OR_3V3, 1800)["map"]["schmit-trigger"]])
     fp.write("\n")
-    print_vddio_map(fp, chipname, "schmitt", "18od33_3v3", [str(get_vddio_schmit(value)) for value in get_vddio_map(PIN_IO_TYPE.IO_TYPE_1V8_OR_3V3, 3300)["map"]["schmit-trigger"]])
+    print_vddio_map(fp, chipname, "schmitt", "18od33_3v3", [str(get_vddio_schmit(value) * 1000) for value in get_vddio_map(PIN_IO_TYPE.IO_TYPE_1V8_OR_3V3, 3300)["map"]["schmit-trigger"]])
     fp.write("\n")
 
     print_vddio_schmitt_func(fp,chipname)
