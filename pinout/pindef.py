@@ -2,9 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import csv
-import pprint
 import re
-import sys
 from enum import Enum
 
 FUNC_PATTERN = re.compile(r"(\d) *: *([^ ]+)")
@@ -126,4 +124,6 @@ def parse_pins(filename: str) -> dict[int, dict]:
     return {k: v for k, v in sorted(pins.items())}
 
 if __name__ == "__main__":
+    import sys
+    import pprint
     pprint.pp(parse_pins(sys.argv[1]))
