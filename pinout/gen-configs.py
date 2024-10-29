@@ -304,7 +304,7 @@ def print_vddio(fp, chipname):
 	.get_pull_up\t\t= {0}_get_pull_up,
 	.get_pull_down\t\t= {0}_get_pull_down,
 	.get_oc_map\t\t= {0}_get_oc_map,
-	.get_schmitt_map\t\t= {0}_get_schmitt_map,
+	.get_schmitt_map\t= {0}_get_schmitt_map,
 }};
 """.format(chipname))
 
