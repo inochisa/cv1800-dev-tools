@@ -106,13 +106,14 @@ def print_misc_top(fp, chipname: str):
     fp.write(value)
 
 def print_misc_down(fp, chipname: str):
-    value = """static const struct cv1800_pinctrl_data {0}_pindata = {{
+    value = """static const struct sophgo_pinctrl_data {0}_pindata = {{
 \t.pins\t\t= {0}_pins,
 \t.pindata\t= {0}_pin_data,
 \t.pdnames\t= {0}_power_domain_desc,
 \t.vddio_ops\t= &{0}_vddio_cfg_ops,
 \t.npins\t\t= ARRAY_SIZE({0}_pins),
-\t.npd\t\t= ARRAY_SIZE({0}_power_domain_desc),
+\t.npds\t\t= ARRAY_SIZE({0}_power_domain_desc),
+\t.pinsize\t= sizeof(struct cv1800_pin)
 }};
 
 static const struct of_device_id {0}_pinctrl_ids[] = {{
@@ -176,8 +177,9 @@ def print_vddio(fp, chipname):
     def get_vddio_schmit(value):
         return value[0][1] if len(value) == 6 else 0
     def print_vddio_pull(fp, chipname, state, *value):
-        fp.write("""static int {0}_get_pull_{1}(struct cv1800_pin *pin, const u32 *psmap)
+        fp.write("""static int {0}_get_pull_{1}(const struct sophgo_pin *sp, const u32 *psmap)
 {{
+	const struct cv1800_pin *pin = sophgo_to_cv1800_pin(sp);
 	u32 pstate = psmap[pin->power_domain];
 	enum cv1800_pin_io_type type = cv1800_pin_io_type(pin);
 
@@ -206,9 +208,10 @@ def print_vddio(fp, chipname):
         head = "static int {0}_get_oc_map(".format(chipname)
         tabs = int(len(head) / 8)
         spaces = len(head) % 8
-        fp.write(head + "struct cv1800_pin *pin, const u32 *psmap,\n")
+        fp.write(head + "const struct sophgo_pin *sp, const u32 *psmap,\n")
         fp.write("\t" * tabs + " " * spaces + "const u32 **map)\n")
         fp.write("""{{
+	const struct cv1800_pin *pin = sophgo_to_cv1800_pin(sp);
 	enum cv1800_pin_io_type type = cv1800_pin_io_type(pin);
 	u32 pstate = psmap[pin->power_domain];
 
@@ -240,9 +243,10 @@ def print_vddio(fp, chipname):
         head = "static int {0}_get_schmitt_map(".format(chipname)
         tabs = int(len(head) / 8)
         spaces = len(head) % 8
-        fp.write(head + "struct cv1800_pin *pin, const u32 *psmap,\n")
+        fp.write(head + "const struct sophgo_pin *sp, const u32 *psmap,\n")
         fp.write("\t" * tabs + " " * spaces + "const u32 **map)\n")
         fp.write("""{{
+	const struct cv1800_pin *pin = sophgo_to_cv1800_pin(sp);
 	enum cv1800_pin_io_type type = cv1800_pin_io_type(pin);
 	u32 pstate = psmap[pin->power_domain];
 
@@ -300,7 +304,7 @@ def print_vddio(fp, chipname):
 
     print_vddio_schmitt_func(fp,chipname)
     fp.write("\n")
-    fp.write("""static const struct cv1800_vddio_cfg_ops {0}_vddio_cfg_ops = {{
+    fp.write("""static const struct sophgo_vddio_cfg_ops {0}_vddio_cfg_ops = {{
 	.get_pull_up\t\t= {0}_get_pull_up,
 	.get_pull_down\t\t= {0}_get_pull_down,
 	.get_oc_map\t\t= {0}_get_oc_map,
